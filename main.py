@@ -1,0 +1,1 @@
+cookieAmount = 0
