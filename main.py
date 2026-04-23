@@ -1,5 +1,8 @@
+from colorama import *
+
 cookieAmount = 0
 cookieClickValue = 1
+
 
 def mainLoop():
     global cookieAmount
@@ -20,10 +23,12 @@ def mainLoop():
                 print("You got", cookieClickValue, "Cookies")
             elif commandArguments[0] in ["-am", "--amount"]:
                 print("You have:", cookieAmount, "cookies")
+
         case "info":
             print(
                 "Welcome to terminal cookie clicker!\nType help into the terminal for help\nIt's based on / copied from Orteil's cookie clicker.\n(you can find it on https://orteil.dashnet.org/cookieclicker )"
             )
+
         case "help":
             if not commandArguments:
                 print(
@@ -32,6 +37,13 @@ def mainLoop():
             elif commandArguments[0] in ["-c", "--commands"]:
                 print(
                     "Command list:\n    cookie [args: --help, --click, --amount]\n    info\n    "
+                )
+
+        case "buildings":
+            if not commandArguments:
+                print(
+                    Fore.RED + "error:",
+                    Fore.WHITE + "no operation specified (use -h for help)",
                 )
     mainLoop()
 
