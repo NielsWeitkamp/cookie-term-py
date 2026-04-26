@@ -9,15 +9,25 @@ def mainLoop():
     global cookieClickValue
     commandInput = input(">>> ")
     mainCommandParts = commandInput.split()
-    mainCommand = mainCommandParts[0]
+
+    if not mainCommandParts:
+        mainCommand = [" "]
+    else:
+        mainCommand = mainCommandParts[0]
+
     commandArguments = mainCommandParts[1:]
 
     match mainCommand:
         case "cookie":
             if not commandArguments:
-                print("No argument")
+                print(
+                    Fore.RED + "error:",
+                    Fore.WHITE + "no operation specified (use -h for help)",
+                )
             elif commandArguments[0] in ["-h", "--help"]:
-                print("help")
+                print(
+                    "usage:  cookie <operation> [...] \noperations: \n    cookie {-h - -help}\n    cookie {-c - -click} \n    cookie {-am - -amount}"
+                )
             elif commandArguments[0] in ["-c", "--click"]:
                 cookieAmount += cookieClickValue
                 print("You got", cookieClickValue, "Cookies")
@@ -39,7 +49,7 @@ def mainLoop():
                     "Command list:\n    cookie [args: --help, --click, --amount]\n    info\n    "
                 )
 
-        case "buildings":
+        case "buildings" | "building":
             if not commandArguments:
                 print(
                     Fore.RED + "error:",
