@@ -1,3 +1,5 @@
+import os
+
 from colorama import *
 
 cookieAmount = 0
@@ -80,7 +82,7 @@ def mainLoop():
             if not commandArguments:
                 print(
                     Fore.RED + "error:",
-                    Fore.WHITE + "no operation specified (use -h for help)",
+                    Style.RESET_ALL + "no operation specified (use -h for help)",
                 )
             elif commandArguments[0] in ["-h", "--help"]:
                 print(
@@ -111,8 +113,14 @@ def mainLoop():
             if not commandArguments:
                 print(
                     Fore.RED + "error:",
-                    Fore.WHITE + "no operation specified (use -h for help)",
+                    Style.RESET_ALL + "no operation specified (use -h for help)",
                 )
+
+        case "clear":
+            if os.name == "posix":
+                _ = os.system("clear")
+            else:
+                _ = os.system("cls")
 
         case " ":
             print("no comment")
