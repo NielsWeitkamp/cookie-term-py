@@ -166,6 +166,9 @@ def mainLoop():
             else:
                 _ = os.system("cls")
 
+        case "exit":
+            quit()
+
         case " ":
             print("no comment")
 
