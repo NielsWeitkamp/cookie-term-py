@@ -159,6 +159,12 @@ def mainLoop():
                     Fore.RED + "error:",
                     Style.RESET_ALL + "no operation specified (use -h for help)",
                 )
+            if commandArguments[0] in ["-b", "--buy"]:
+                print(mainCommandParts[2])
+            elif commandArguments[0] in ["-l", "--list"]:
+                for name, data in buildings.items():
+                    if data["available"]:
+                        print(name)
 
         case "clear":
             if os.name == "posix":
