@@ -19,23 +19,23 @@ Things to come:
 <h text-decoration: underline;>Commands</h>
 
 - help
- - -c, --commands: Prints a list of commands
+  - -c, --commands: Prints a list of commands
 
 - cookie
- - -c, --click: Clicks the cookie.
- - -h, --help: Prints all command arguments for cookie.
- - -am, --amount: Prints the amount of cookies you have.
+  - -c, --click: Clicks the cookie.
+  - -h, --help: Prints all command arguments for cookie.
+  - -am, --amount: Prints the amount of cookies you have.
 
 - info Shows some info about the game.
 
 - building(s)
- - -b, --buy {building name}: Buys {building name} if you have enough cookies (Does not work yet)
- - -l, --list: Prints all available buildings
+  - -b, --buy {building name}: Buys {building name} if you have enough cookies (Does not work yet)
+  - -l, --list: Prints all available buildings
 
 - name
- - -r, --rename {factoryname}: Sets the factory name to {factoryname}
- - -p, --print: Prints the factory name
- - -s, --show: If you type true or false behind it it wil show the factory name before the command input if it's true or false, is also toggolable with no true or false.
+  - -r, --rename {factoryname}: Sets the factory name to {factoryname}
+  - -p, --print: Prints the factory name
+  - -s, --show: If you type true or false behind it it wil show the factory name before the command input if it's true or false, is also toggolable with true or false.
 
 - clear: Clears the terminal
 
