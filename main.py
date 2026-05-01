@@ -2,6 +2,8 @@ import os
 
 from colorama import *
 
+nameInCommand = True
+factoryName = "CookieFactory"
 cookieAmount = 0
 cookieClickValue = 1
 buildings = {
@@ -111,7 +113,13 @@ buildings = {
 def mainLoop():
     global cookieAmount
     global cookieClickValue
-    commandInput = input(">>> ")
+    global factoryName
+    global nameInCommand
+    commandInput = "a"
+    if nameInCommand == True:
+        commandInput = input(f"{factoryName} >>> ")
+    elif nameInCommand == False:
+        commandInput = input(">>> ")
     mainCommandParts = commandInput.split()
 
     if not mainCommandParts:
@@ -166,6 +174,42 @@ def mainLoop():
                     if data["available"]:
                         print(name)
 
+        case "name":
+            if not commandArguments:
+                print(
+                    Fore.RED + "error:",
+                    Style.RESET_ALL + "no operation specified (use -h for help)",
+                )
+            elif commandArguments[0] in ["-r", "--rename"]:
+                if not commandArguments[1:]:
+                    print(
+                        Fore.RED + "error:",
+                        Style.RESET_ALL + "enter a name for your factory",
+                    )
+                else:
+                    factoryName = commandArguments[1]
+                    print(f"Your factory is now called {factoryName}")
+            elif commandArguments[0] in ["-h", "--help"]:
+                print(
+                    "usage: name <operation> [...]\n    name {-h - -help}\n    name {-r - -rename} \n    name {-p - -print}\n    {-s - -show}"
+                )
+            elif commandArguments[0] in ["-s", "--show"]:
+                if not commandArguments[1:]:
+                    if nameInCommand == True:
+                        nameInCommand = False
+                        print("Factory name hidden!")
+                    elif nameInCommand == False:
+                        nameInCommand = True
+                        print("Factory name shown!")
+                elif commandArguments[1] == "true":
+                    nameInCommand = True
+                    print("Factory name shown!")
+                elif commandArguments[1] == "false":
+                    nameInCommand = False
+                    print("Factory name hidden!")
+            elif commandArguments[0] in ["-p", "--print"]:
+                print(f"The name of your factory is: {factoryName}")
+
         case "clear":
             if os.name == "posix":
                 _ = os.system("clear")
@@ -179,11 +223,8 @@ def mainLoop():
             print("no comment")
 
         case _:
-            print(mainCommand + ":", "no command found")
+            print(f"{mainCommand}: no command found")
     mainLoop()
-
-    print("\n", mainCommand)
-    print(commandArguments)
 
 
 mainLoop()
