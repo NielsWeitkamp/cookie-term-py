@@ -16,7 +16,7 @@ Things to come:
 
 ***
 
-<h text-decoration: underline;>Commands</h>
+Commands:
 
 - help
   - -c, --commands: Prints a list of commands
